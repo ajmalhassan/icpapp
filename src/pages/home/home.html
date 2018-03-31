@@ -1,14 +1,38 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>
-      Ionic Blank
+      Home
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+ <ion-grid>
+  <ion-item>
+    <ion-icon name="calendar" item-start></ion-icon>
+    Current Quarter
+    <ion-badge item-end>{{currentQuarter}}</ion-badge>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="calendar" item-start></ion-icon>
+    Current Month
+    <ion-badge item-end>{{currentMonth}}</ion-badge>
+  </ion-item>
+
+  <ion-item *ngIf="selectedSurvey">
+    <ion-icon name="filing" item-start></ion-icon>
+    Selected Survey
+    <ion-badge item-end>{{selectedSurvey === '1' ? 'Phase 1': selectedSurvey === '2' ? 'Phase 2': 'Educational'}}</ion-badge>
+  </ion-item>
+
+  <div padding>
+    <button ion-button color="primary" block (click)="showSurveyType()">{{selectedSurvey ? 'Change': 'Choose'}} survey type</button>
+  </div>
+
+  <div padding *ngIf="selectedSurvey">
+    <button ion-button color="primary" block (click)="goToListing()">Proceed</button>
+  </div>
+ </ion-grid>
+
 </ion-content>

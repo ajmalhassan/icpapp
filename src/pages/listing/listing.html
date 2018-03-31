@@ -1,0 +1,28 @@
+<!--
+  Generated template for the ListingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Listing
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="items.length > 0">
+    <span *ngFor="let item of items">
+        <ion-item-divider color="light">{{item.category}}</ion-item-divider>
+        <button ion-item *ngFor="let product of item.catalogues" (click)="goToProducts(product)">
+          {{ product.itemName }} 
+          <!-- <ion-badge item-end>✔</ion-badge> -->
+        </button>
+      </span>
+  </ion-list>
+  <div *ngIf="items.length <= 0" style="text-align: center; padding-top: 20px; font-size: medium">
+    No catalogues to show
+  </div>
+</ion-content>
